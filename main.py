@@ -1,4 +1,4 @@
 import requests
-calling_api = requests.get("https://cat-fact.herokuapp.com")
-finding_status = calling_api.status_code
-print(finding_status)
+calling_api = requests.get("https://cat-fact.herokuapp.com/facts")
+print(calling_api.status_code)
+print(calling_api.json())
