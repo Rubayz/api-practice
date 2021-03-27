@@ -1,4 +1,14 @@
 import requests
-calling_api = requests.get("https://cat-fact.herokuapp.com/facts")
-print(calling_api.status_code)
-print(calling_api.json())
+import json
+
+url = "https://api.exchangeratesapi.io/latest?symbols=USD,GBP"
+
+response = requests.get(url)
+data = response.text
+parsed = json.loads(data)
+date = parsed["date"]
+
+gbp_rate = parsed["rates"]["GBP"]
+usd_rate = parsed["rates"]["USD"]
+print("On " + date + " EUR equals " + str(gbp_rate) + " GBP")
+print("On " + date + " EUR equals " + str(usd_rate) + " USD")
